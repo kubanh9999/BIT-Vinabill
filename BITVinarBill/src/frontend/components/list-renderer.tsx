@@ -24,7 +24,7 @@ export function ListRenderer<T>({
   noDivider,
 }: ListRendererProps<T>) {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const primaryColor = '#009e91'; // Màu chính
+  const primaryColor = '#3e4094'; // Màu chính
 
   const collapsedItems = useMemo(() => {
     return items?.slice(0, limit);

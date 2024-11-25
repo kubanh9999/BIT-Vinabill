@@ -138,7 +138,7 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
     setVisible(false);
     alertAddToCartSuccessfull();
   };
-  
+
   return (
     <>
       {children({
@@ -147,16 +147,27 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
       })}
       {createPortal(
         <Sheet visible={visible} onClose={() => setVisible(false)}
-        style={{maxHeight: "90%", overflowY: "auto",overflow: "visible",}}>
+          style={{ maxHeight: "90%", overflowY: "auto", overflow: "visible", }}>
           {product && (
-            <Box className="space-y-6 mt-2" p={4} style={{maxHeight:"100%", overflow: "visible",}}>
+            <Box className="space-y-6 mt-2" p={4} style={{ maxHeight: "100%", overflow: "visible", }}>
               <Box className="space-y-2">
-                <Text.Title>{product.name}</Text.Title>
+                <Text.Title
+                  style={{
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {product.name}
+                </Text.Title>
+
                 <Text>
                   <FinalPrice options={options}>{product}</FinalPrice>
                 </Text>
                 <Text >
-                  <div className=" justify-between mx-2 overflow-y-auto overflow-x-hidden max-h-56" 
+                  <div className=" justify-between mx-2 overflow-y-auto overflow-x-hidden max-h-56"
                     dangerouslySetInnerHTML={{
                       __html: product.description ?? "",
                     }}
@@ -177,7 +188,7 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
                             [variant.id]: selectedOption,
                           }))
                         }
-                      />  
+                      />
                     ) : (
                       <MultipleOptionPicker
                         key={variant.id}
@@ -193,42 +204,42 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
                       />
                     )
                   )}
-                  {
-                    product.price ? (
-                      <>
-                        <QuantityPicker value={quantity} onChange={setQuantity} />
-                        {selected ? (
-                          <Button
-                            style={{ backgroundColor: "var(--textPrimary)" }}
-                            // variant={quantity > 0 ? "primary" : "secondary"}
-                            type={quantity > 0 ? "highlight" : "neutral"}
-                            fullWidth
-                            onClick={addToCart}
-                          >
-                            {quantity > 0
-                              ? selected
-                                ? "Cập nhật giỏ hàng"
-                                : "Thêm vào giỏ hàng"
-                              : "Xoá"}
-                          </Button>
-                        ) : (
-                          <Button
-                            style={{ backgroundColor: "var(--textPrimary)" }} 
-                            disabled={!quantity}
-                            // variant="primary"
-                            type="highlight"
-                            fullWidth
-                            onClick={addToCart}
-                          >
-                            Thêm vào giỏ hàng
-                          </Button>
-                        )} 
-                      </>
-                    ):(
-                      <ContactButton product={product}/>
-                    )
-                  }
-                
+                {
+                  product.price ? (
+                    <>
+                      <QuantityPicker value={quantity} onChange={setQuantity} />
+                      {selected ? (
+                        <Button
+                          style={{ backgroundColor: "var(--textPrimary)" }}
+                          // variant={quantity > 0 ? "primary" : "secondary"}
+                          type={quantity > 0 ? "highlight" : "neutral"}
+                          fullWidth
+                          onClick={addToCart}
+                        >
+                          {quantity > 0
+                            ? selected
+                              ? "Cập nhật giỏ hàng"
+                              : "Thêm vào giỏ hàng"
+                            : "Xoá"}
+                        </Button>
+                      ) : (
+                        <Button
+                          style={{ backgroundColor: "var(--textPrimary)" }}
+                          disabled={!quantity}
+                          // variant="primary"
+                          type="highlight"
+                          fullWidth
+                          onClick={addToCart}
+                        >
+                          Thêm vào giỏ hàng
+                        </Button>
+                      )}
+                    </>
+                  ) : (
+                    <ContactButton product={product} />
+                  )
+                }
+
               </Box>
             </Box>
           )}

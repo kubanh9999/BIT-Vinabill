@@ -77,7 +77,7 @@ export const CSForm = ({
       <Box
         className="bg-white rounded-lg p-4 justify-center items-center flex w-full h-full"
       >
-        <span className="loading loading-lg loading-bars" style={{ color: '#009e91' }}></span>
+        <span className="loading loading-lg loading-bars" style={{ color: '#3e4094' }}></span>
       </Box>
       </ErrorBoundary>
     )

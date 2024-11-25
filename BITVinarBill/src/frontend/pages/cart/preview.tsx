@@ -20,6 +20,8 @@ export const CartPreview: FC = () => {
   const navigate = useNavigate();
   const selectAddress = useRecoilValue(selectedAddressState);
   const userCurrent = useRecoilValue(userCurrentState);
+console.log("tổng",totalPrice);
+console.log("quantity",quantity);
 
   const payment_methods_NOT_CHECKED = ["BANK", "BANK_SANDBOX", "COD", "COD_SANDBOX"];
 
