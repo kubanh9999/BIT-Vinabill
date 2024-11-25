@@ -12,5 +12,6 @@ export const FinalPrice: FC<{
     () => calcFinalPrice(children, options),
     [children, options],
   );
+  const displayPrice = finalPrice != null && finalPrice !== -1 ? finalPrice : "Liên hệ";
   return <DisplayPrice>{finalPrice}</DisplayPrice>;
 };

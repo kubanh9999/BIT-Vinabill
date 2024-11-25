@@ -1,4 +1,4 @@
-import { FinalPrice } from "components/display/final-price";
+import { FinalPrice, PriceContact } from "components/display/final-price";
 import React, { FC, useState } from "react";
 import { Product } from "types/product";
 import { Box, Text } from "zmp-ui";
@@ -9,9 +9,11 @@ import { useToBeImplemented } from "hooks/hooks";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartState, cartStorageState } from "state";
 import { SelectedOptions } from "types/cart";
+import { DisplayPrice } from "components/display/price";
 
 export const ProductItem: FC<{ product: Product }> = ({ product }) => {
   const [visible, setVisible] = useState(false);
+  console.log('product.price:', product.price, 'isNaN:', isNaN(parseFloat(product.price)));
 
   // const [quantity, setQuantity] = useState(1);
   const setCart = useSetRecoilState(cartState);
@@ -32,7 +34,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
 
       // Nếu người dùng nhấn OK, sẽ thực hiện gọi điện
       if (confirmCall) {
-        window.location.href = 'tel:02363659118'; // Thay số điện thoại bằng số bạn cần
+        window.location.href = 'tel:0916847711'; // Thay số điện thoại bằng số bạn cần
       }
       return;
     }
@@ -72,7 +74,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
   return (
     <ProductPicker product={product}>
       {({ open }) => (  
-        <div className="space-y-2" >
+        <div className="space-y-2" style={{ border: '4px solid #3e4094 rgba(62, 64, 148, 0.5)', borderRadius: '8px',boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)'}}>
           <Box className="w-full aspect-square relative">
             <img onClick={() => handleclick(open)} loading="lazy" src={product.image}
               className="absolute left-0 right-0 top-0 bottom-0 w-full h-full object-cover object-center rounded-lg bg-skeleton"
@@ -83,11 +85,14 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
           <Text size="xSmall" className="text-[#4d4d4d] pb-2 flex justify-between items-center px-2">
   {/* Hiển thị sale với gạch chân và căn chỉnh bên trái */}
   {product.sale && (
-    <span className=" text-red-500 font-bold text-sm mr-2"> 
-     {product.price && !isNaN(product.price) ? 
-      `${product.price?.toLocaleString()} VND` : "Liên hệ"}
-     </span>
-  )}
+  <span className="text-red-500 font-bold text-sm mr-2">
+{product.price != null && product.price !== -1 ? product.price : "Liên hệ"}
+
+
+
+
+  </span>
+)}
 
   {/* Hiển thị price ở bên trái */}
     

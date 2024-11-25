@@ -15,7 +15,7 @@ import { FaUser, FaChevronCircleRight, FaClock, FaStar } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
 const listRender = (handle, navigate, isAdmin) => {
-  const primaryColor = '#009e91'; // Màu chính
+  const primaryColor = '#3e4094'; // Màu chính
   const items = [
     {
       left: <FaUser style={{ color: 'black' }} size={20} className="inline" />,
@@ -151,7 +151,7 @@ const Other: FC = () => {
   const handleContact = () => {   
     navigate('/contact');
   };
-  const primaryColor = '#009e91'; // Màu chính
+  const primaryColor = '#3e4094'; // Màu chính
 
   return (
     <Box className="m-4 text-black">
