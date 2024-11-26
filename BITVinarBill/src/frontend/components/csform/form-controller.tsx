@@ -19,10 +19,11 @@ export const FormController = ({
   select_register,
   selectType,
 }: FormControllerProps) => {
-  const [typeState, setTypeState] = useRecoilState(selectTypeState);
+  const [typeState, setTypeState] = useRecoilState(selectTypeState);  
 
   const InpWrapper = useCallback(
     ({ children }) => {
+      
       return (
         <label className="form-control w-full" htmlFor="">
           <div className="label">

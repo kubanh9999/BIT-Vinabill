@@ -35,6 +35,7 @@ export const phoneState = selector({
   get: async () => {
     try {
       const token = await getPhoneNumber();
+      
       return token.token;
     } catch (error) {
       console.error("Error fetching access token:", error);
@@ -204,15 +205,35 @@ export const variantState = selector<any>({
   },
 });
 
+// export const productsState = selector<Product[]>({
+//   key: "products",
+//   get: async ({ get }) => {
+//     const products = await ProductService.getAll();
+// console.log('products',products);
+
+//     const variants = get(variantState);
+
+//     return products.map(
+//       (product) =>
+//       ({
+//         ...product,
+//         variants: variants.filter((variant) =>
+//           product.variantId.includes(variant.id)
+//         ),
+//       } as Product)
+//     );
+//   },
+// });
 export const productsState = selector<Product[]>({
   key: "products",
   get: async ({ get }) => {
     const products = await ProductService.getAll();
-console.log('products',products);
+    console.log('products', products);
 
     const variants = get(variantState);
 
-    return products.map(
+    // Áp dụng map để bổ sung variants và sau đó đảo ngược thứ tự
+    const updatedProducts = products.map(
       (product) =>
       ({
         ...product,
@@ -221,8 +242,12 @@ console.log('products',products);
         ),
       } as Product)
     );
+
+    // Đảo ngược thứ tự của danh sách sản phẩm
+    return updatedProducts.reverse();
   },
 });
+
 
 export const ordersState = selector<Order[]>({
   key: "orders",

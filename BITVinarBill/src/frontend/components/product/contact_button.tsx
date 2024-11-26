@@ -9,7 +9,7 @@ const ContactButton = ({ product }) => {
 
   const handleCall = () => {
     // const phoneMatch = product.short_description.match(/tel:(\d+)/);
-    const phoneMatch = "02363659118";
+    const phoneMatch = "0916847711";
     if (phoneMatch) {
       window.location.href = `tel:${phoneMatch}`;
     }

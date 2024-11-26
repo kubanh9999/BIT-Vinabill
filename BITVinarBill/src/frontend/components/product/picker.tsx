@@ -205,7 +205,7 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
                     )
                   )}
                 {
-                  product.price ? (
+                  product.price && product.price != -1 ? (
                     <>
                       <QuantityPicker value={quantity} onChange={setQuantity} />
                       {selected ? (

@@ -60,7 +60,7 @@ const InfoUserPage: React.FC = () => {
             <div style={styles.content} className='bg-textPrimary'>
                 <form onSubmit={handleEditCustomer} style={styles.form}>
                     <div style={styles.formGroup}>
-                        <label htmlFor="username" style={styles.label}>Tên người dùng
+                        <label className="flex gap-2" htmlFor="username" style={styles.label}>Tên người dùng
                         <FaEdit  size={20} />
 
                         </label>
@@ -126,6 +126,7 @@ const styles = {
         gap: '20px',
     },
     formGroup: {
+        alignItems: "center",
         display: 'flex',
         flexDirection: 'column' as 'column',
     },

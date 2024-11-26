@@ -144,15 +144,7 @@ const ResultContent: FC = () => {
     }
   }, [paymentResult]);
 
-  useEffect(()=>{
-    console.log("payment có được: ", payment)
-  },[payment])
-  useEffect(()=>{
-    console.log("invoice có được: ", invoice)
-  },[invoice])
-
   const createOrder = (rs: any) => {
-    console.log("rs nhận được để tạo order: ", rs);
     
     setPayment({
       order_id: rs.orderId,
