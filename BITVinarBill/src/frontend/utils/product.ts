@@ -5,13 +5,15 @@ import { SelectedOptions } from "types/cart";
 
 export function calcFinalPrice(product: Product, options?: SelectedOptions) {
   let finalPrice = product?.price;
-  if (product.sale) {
+  /* console.log("giá 1:",finalPrice); */
+  
+/*   if (product.sale) {
     if (product.sale.type === "fixed") {
       finalPrice = product?.price - product.sale.amount;
     } else {
       finalPrice = product?.price * (1 - product.sale.percent);
     }
-  }
+  } */
 
   if (options && product.variants) {
     const selectedOptions: Option[] = [];
@@ -44,6 +46,8 @@ export function calcFinalPrice(product: Product, options?: SelectedOptions) {
       return price;
     }, finalPrice);
   }
+/*   console.log("giá cuối ",finalPrice); */
+  
   return finalPrice;
 }
 

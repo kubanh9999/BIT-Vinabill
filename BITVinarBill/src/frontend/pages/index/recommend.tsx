@@ -87,7 +87,7 @@ export const RecommendContent: FC = () => {
                   <Box className="space-y-1">
                     <Text size="small">{product.name}</Text>
                     <Text size="large" className="font-medium text-green pb-2 flex justify-between items-center px-2">
-                      {product.price === -1 ? "Liên hệ" : <FinalPrice>{product}</FinalPrice>}
+                      { <FinalPrice>{product}</FinalPrice>}
                       
                       <div className=""   onClick={() => handleCallPrompt(() => addToCart(product))}><FaShoppingCart size={18}/></div>
                     </Text>

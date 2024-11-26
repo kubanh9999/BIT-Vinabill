@@ -408,9 +408,16 @@ export const totalPriceState = selector({
   key: "totalPriceState",
   get: ({ get }) => {
     const tempTotalPrice = get(tempTotalPriceState);
-    let discountValue = get(discountValueState);
-    const discounts = get(selectedDiscountToOrderState);
+    console.log("tempTotalPrice:",tempTotalPrice);
 
+    const validTempTotalPrice = isNaN(tempTotalPrice) ? 0 : tempTotalPrice;
+
+    let discountValue = get(discountValueState);
+    console.log("discountValue:",discountValue);
+    
+    const validDiscountValue = isNaN(discountValue) ? 0 : discountValue;
+    const discounts = get(selectedDiscountToOrderState);
+    console.log("discountValue:",discountValue);
     (discounts[0] as Discount)?.conditions?.map((condition) => {
       return (discountValue =
         condition.conditionType === "MAX_DISCOUNT_VALUE" &&
@@ -419,7 +426,7 @@ export const totalPriceState = selector({
           : discountValue);
     });
 
-    return tempTotalPrice - discountValue;
+    return validTempTotalPrice - validDiscountValue;
   },
 });
 
