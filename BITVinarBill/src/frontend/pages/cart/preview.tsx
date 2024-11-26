@@ -57,7 +57,7 @@ console.log("quantity",quantity);
           {quantity} sản phẩm
         </Text>
         <Text.Title size="large">
-          <DisplayPrice>{totalPrice}</DisplayPrice>
+          <DisplayPrice finalPrice={totalPrice} originalPrice={-1}   />
         </Text.Title>
       </Box>
       <Button

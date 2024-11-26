@@ -22,6 +22,7 @@ AxiosClient.interceptors.request.use(
     const auth = await getStorage({
       keys: ["authentication"],
     });
+    
     if (auth) {
       if (config.headers && auth.authentication?.token) {
         config.headers.Authorization = `Bearer ${auth.authentication?.token}`;
@@ -47,6 +48,7 @@ AxiosClient.interceptors.response.use(
         const auth = await getStorage({
           keys: ["authentication"],
         });
+        
         if (!auth) {
           console.error("Your session has expired. Please login again.");
           useToBeImplemented({

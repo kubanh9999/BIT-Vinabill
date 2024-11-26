@@ -24,6 +24,8 @@ export const PersonPicker: FC = () => {
   const [phoneNumber, setPhoneNumber] = useState();
 
   if (!userCurrent.phone_number) {
+    console.log("user curent không có sđt: ", userCurrent);
+    
     return <RequestPersonPickerPhone />;
   }
 
@@ -54,7 +56,7 @@ export const RequestPersonPickerPhone: FC = () => {
 
       const phone = await getPhonenumber(contents);
       setUserCurrent((prev) => ({ ...prev, name, id: userInfo.userInfo.id, phone_number: phone }));
-
+      
       (async () => {
         try {
           console.log("Calling CustomerService.update...");
@@ -63,7 +65,9 @@ export const RequestPersonPickerPhone: FC = () => {
             name: name,
             phone_number: phone,
           });
+          
           if (!updateResponse) {
+            
             if (userCurrent?.id) {
               const { id, name } = userCurrent;
 

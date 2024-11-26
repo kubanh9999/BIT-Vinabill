@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
       },
       sale: {
         type: DataTypes.DOUBLE,
-        allowNull: false,
+        allowNull: true,
       },
       active: {
         type: DataTypes.BOOLEAN,

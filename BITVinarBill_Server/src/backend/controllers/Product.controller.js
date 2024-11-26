@@ -60,6 +60,7 @@ exports.createProduct = async (req, res) => {
         price: item?.price,
         image: req.file?.path,
         description: item?.description,
+        sale: item?.sale,
       },
       { transaction }
     );

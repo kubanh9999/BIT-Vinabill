@@ -1,4 +1,4 @@
-import { FinalPrice, PriceContact } from "components/display/final-price";
+import { FinalPrice } from "components/display/final-price";
 import React, { FC, useState } from "react";
 import { Product } from "types/product";
 import { Box, Text } from "zmp-ui";
@@ -13,7 +13,7 @@ import { DisplayPrice } from "components/display/price";
 
 export const ProductItem: FC<{ product: Product }> = ({ product }) => {
   const [visible, setVisible] = useState(false);
-  console.log('product.price:', product.price, 'isNaN:', isNaN(parseFloat(product.price)));
+  //console.log('product.price:', product.price, 'isNaN:', isNaN(parseFloat(product.price)));
 
   // const [quantity, setQuantity] = useState(1);
   const setCart = useSetRecoilState(cartState);
@@ -40,11 +40,11 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
     }
     open();
   };
-  
+
   const addToCart = (pro) => {
     console.log("Ko ...: ", pro);
-    console.log("Co ...: ", {...pro});
-    
+    console.log("Co ...: ", { ...pro });
+
     if (pro) {
       setCart((cart) => { // [.....]
         let res = [...cart];  // res = [.....]
@@ -69,39 +69,27 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
     }
     setVisible(false);
     alertAddToCartSuccessfull();
-  };  
+  };
 
   return (
     <ProductPicker product={product}>
-      {({ open }) => (  
-        <div className="space-y-2" style={{ border: '4px solid #3e4094 rgba(62, 64, 148, 0.5)', borderRadius: '8px',boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)'}}>
+      {({ open }) => (
+        <div className="space-y-2" style={{ border: '4px solid #3e4094 rgba(62, 64, 148, 0.5)',
+         borderRadius: '8px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)' }}
+         onClick={open}>
           <Box className="w-full aspect-square relative">
-            <img onClick={() => handleclick(open)} loading="lazy" src={product.image}
-              className="absolute left-0 right-0 top-0 bottom-0 w-full h-full object-cover object-center rounded-lg bg-skeleton"
+            <img loading="lazy" src={product.image}
+              className="absolute left-0 right-0 top-0 bottom-0 w-full h-full object-contain object-center rounded-lg bg-skeleton"              
             />
           </Box>
-          <Text style={styles.productName}>{product.name}</Text>
-        
+          <Text className="ml-1" style={styles.productName}>{product.name}</Text>
+
           <Text size="xSmall" className="text-[#4d4d4d] pb-2 flex justify-between items-center px-2">
-  {/* Hiển thị sale với gạch chân và căn chỉnh bên trái */}
-  {product.sale && (
-  <span className="text-red-500 font-bold text-sm mr-2">
-{product.price != null && product.price !== -1 ? product.price : "Liên hệ"}
+            <span className="text-red-500 font-bold text-sm mr-2">
+                {!product.price || product.price == -1 ? ( "Liên hệ" ) : ( <FinalPrice>{product}</FinalPrice>)}
 
-
-
-
-  </span>
-)}
-
-  {/* Hiển thị price ở bên trái */}
-    
-  <span className="line-through">   <span>{product.sale}</span></span>
-  {/* Giỏ hàng ở bên phải */}
-  {/* <div onClick={() => handleclick(() => addToCart(product))} className="ml-auto">
-    <FaShoppingCart size={18} />
-  </div> */}
-</Text>
+              </span>
+          </Text>
 
         </div>
       )}
@@ -111,7 +99,7 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
 
 const styles = {
   productName: {
-    width: '180px',
+    width: '100%',
     whiteSpace: 'nowrap', // Không cho văn bản xuống dòng
     overflow: 'hidden', // Ẩn phần văn bản tràn ra ngoài
     textOverflow: 'ellipsis', // Thay thế phần văn bản bị ẩn bằng dấu ba chấm

@@ -25,7 +25,7 @@
   "template": {
     "primaryColor": "#FF0000",
     "greenColor": "#3e4094",
-    "prefixCurrencySymbol": false,
+    "prefixCurrencySymbol": true,
     "currencySymbol": "đ",
     "headerLogo": ""
   }

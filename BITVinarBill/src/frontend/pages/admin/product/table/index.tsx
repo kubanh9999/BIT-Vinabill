@@ -15,8 +15,26 @@ export const TableProductManage = () => {
   const setModalVisible = useSetRecoilState(modalVisibleState);
   const { deleteProduct } = useProducts();
 
+  const convertFromHTML = (html) => {
+    if (!html) return '';
+
+    // 1. Thay thế <br> bằng xuống dòng (\n)
+    const textWithLineBreaks = html.replace(/<br>/g, '\n');
+
+    // 2. Chuyển đổi các ký tự đã được escape về dạng gốc
+    return textWithLineBreaks
+        .replace(/&amp;/g, '&')  // Chuyển đổi &amp; về &
+        .replace(/&lt;/g, '<')  // Chuyển đổi &lt; về <
+        .replace(/&gt;/g, '>')  // Chuyển đổi &gt; về >
+        .replace(/&quot;/g, '"'); // Chuyển đổi &quot; về "
+};
+
   const handleEditProduct = (val: Product) => {
-    setSelectedProduct(val);
+    const convertVal = {
+      ...val, 
+      description: convertFromHTML(val.description)
+    }
+    setSelectedProduct(convertVal);
     setModalVisible(true);
   };
 

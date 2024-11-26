@@ -7,7 +7,7 @@ const ContactPage: FC = () => {
 
   useEffect(() => {
     if (iframeRef.current) {
-      iframeRef.current.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.3262010339877!2d108.17856917465596!3d16.048553739992048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142190db26afee9%3A0x43b26b39dc72c163!2zMzI0IFTDtG4gxJDhuqNuLCBIb8OgIEFuLCBD4bqpbSBM4buHLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1731841351725!5m2!1svi!2s" ;
+      iframeRef.current.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0007960907465!2d108.1884431735413!3d16.06544848461344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219aaa32a9c5f%3A0x666e7b5f6b57292!2zMjQgQ8O5IENow61uaCBMYW4sIEjDsmEgS2jDqiwgVGhhbmggS2jDqiwgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1732590744313!5m2!1sen!2s" ;
     }
   }, []);
 
@@ -18,10 +18,10 @@ const ContactPage: FC = () => {
         <Box className="m-4 space-y-4">
           <Box className="space-y-2">
           <Text.Title><strong>Thông tin liên hệ</strong></Text.Title>
-          <Text><strong>Địa chỉ:</strong> 324 Tôn Đản, Quận Cẩm Lệ, TP Đà Nẵng</Text>
-          <Text><strong>Số điện thoại hotline/zalo:</strong> <a href="tel:02363659116" style={{ textDecoration: 'underline' }}>023.6365.9116 </a></Text>
-          <Text><strong>Số điện thoại văn phòng:</strong> <a href="tel:02363659118" style={{ textDecoration: 'underline' }}></a>- 023.6365.9118</Text>
-          <Text><strong>Email 1:</strong> <a href="mailto:vinar.infor@gmail.com" style={{ textDecoration: 'underline' }}>vinar.infor@gmail.com</a></Text>
+          <Text><strong>Địa chỉ:</strong> Văn phòng tại Đà Nẵng: 24 Cù Chính Lan, phường Hòa Khê, Thanh Khê, Đà Nẵng</Text>
+          <Text><strong>Số điện thoại hotline/zalo:</strong> <a href="tel: 0916847711" style={{ textDecoration: 'underline' }}> 0916847711 </a></Text>
+          <Text><strong>Số điện thoại tư vấn:</strong> <a href="tel: 0916847711" style={{ textDecoration: 'underline' }}></a>  0916847711</Text>
+          <Text><strong>Email: </strong> <a href="mailto:voquychau@yahoo.com" style={{ textDecoration: 'underline' }}>voquychau@yahoo.com</a></Text>
          
         </Box>
         <Box className="space-y-2">

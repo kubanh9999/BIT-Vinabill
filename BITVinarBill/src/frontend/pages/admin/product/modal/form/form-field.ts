@@ -6,15 +6,23 @@ export const formFields: FormField[] = [
     field: "name",
     type: "txt",
     validate: {
-      message: "Tên sản phẩm rổng",
+      message: "Tên sản phẩm rỗng",
     },
   },
   {
-    title: "Giá sản phẩm",
+    title: "Giá bán chính thức",
     field: "price",
     type: "txt",
     validate: {
-      message: "Giá sản phẩm rổng",
+      message: "Giá sản phẩm rỗng",
+    },
+  },
+  {
+    title: "Giá ban đầu",
+    field: "sale",
+    type: "txt",
+    validate: {
+      message: "Giá sản phẩm rỗng",
     },
   },
   {

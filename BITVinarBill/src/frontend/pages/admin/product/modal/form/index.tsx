@@ -26,6 +26,7 @@ export const ManageProductForm = () => {
   const refresh = useRecoilRefresher_UNSTABLE(productsState);
   const setModalVisible = useSetRecoilState(modalVisibleState);
   const navigate = useNavigate();
+
   function convertToHTML(text) {
     if (!text) return '';
 
@@ -51,6 +52,7 @@ export const ManageProductForm = () => {
       
       addProduct(submitProduct, true);
     } else {
+      submitProduct.description = convertToHTML(submitProduct.description);
       updateProduct(submitProduct, true);
     }
     navigate('/admin/product');

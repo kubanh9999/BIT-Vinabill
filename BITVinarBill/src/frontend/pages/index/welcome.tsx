@@ -23,10 +23,13 @@ export const Welcome: FC = () => {
       title={
         (
           <Box flex alignItems="center" className="space-x-2">
-            <img
-              className="w-8 h-8 rounded-lg border-inset"
+            <Box className="bg-white rounded-sm border-inset">
+              <img
+              className="w-10 h-10"
               src={getConfig((c) => c.template.headerLogo) || logo}
-            />
+              />
+            </Box>
+            
             <Box>
               <Text.Title size="small" className="text-white">{appConfig.app.title}</Text.Title>
               <Text size="xxSmall" className="text-white">

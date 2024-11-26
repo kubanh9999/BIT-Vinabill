@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Box, Header, Icon, Page, Text, Spinner } from "zmp-ui";
 import CustomReview from "../components/custom-review"; 
 import subscriptionDecor from "static/subscription-decor.svg";
@@ -86,7 +86,6 @@ interface PersonalProps {
   setLoading: (loading: boolean) => void; // Thêm prop setLoading
 }
 
-
 const Personal: FC<PersonalProps> = ({ setLoading }) => {
   const navigate = useNavigate();
   const getAuth = useRecoilValue(authenticationState);
@@ -151,7 +150,6 @@ const Other: FC = () => {
   const handleContact = () => {   
     navigate('/contact');
   };
-  const primaryColor = '#3e4094'; // Màu chính
 
   return (
     <Box className="m-4 text-black">

@@ -32,6 +32,7 @@ const NewDetailPage: FC = () => {
       </Page>
     );
   }
+  
 
   // Add custom inline styles for <ul> and <li>
   // const styledContent = `

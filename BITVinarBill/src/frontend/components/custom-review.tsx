@@ -86,6 +86,7 @@ const CustomReview: FC<{ visible: boolean; onClose: () => void }> = ({
           <Box flex justifyContent="center" mb={4} mt={4}>
             {[1, 2, 3, 4, 5].map((star) => (
               <Box
+                key={star}
                 onClick={() => setRating(star)}
                 className="mx-1"
                 style={{ cursor: "pointer" }}
