@@ -16,6 +16,8 @@ const ProductVariantService = require("../services/ProductVariant.service");
 exports.getAllProducts = async (req, res) => {  
   try {
     const products = await productService.getAllProducts();
+    console.log('products',products);
+    
     res.status(200).json(products);
   } catch (error) {
     console.log(error);
