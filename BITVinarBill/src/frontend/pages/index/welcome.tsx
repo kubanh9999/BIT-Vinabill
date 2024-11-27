@@ -13,7 +13,7 @@ export const Welcome: FC = () => {
 
   const displayName = userCurrent?.name
     ? `${userCurrent.name}`
-    : "Người dùng mới";
+    : "Người dùng zalo";
 
 
   return (

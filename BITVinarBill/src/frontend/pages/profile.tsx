@@ -14,6 +14,7 @@ import { Subscription } from "../components/subscription";
 import { FaUser, FaChevronCircleRight, FaClock, FaStar } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
+import { getUserInfo } from "zmp-sdk";
 const listRender = (handle, navigate, isAdmin) => {
   const primaryColor = '#3e4094'; // Màu chính
   const items = [
@@ -94,17 +95,19 @@ const Personal: FC<PersonalProps> = ({ setLoading }) => {
   const userCurrent = useRecoilValue(userCurrentState);
   const setUserCurrent = useSetRecoilState(userCurrentAtom);
 
-  const handleUserInfo = () => {
+  const handleUserInfo = async () => {
     setLoading(true); // Trigger loading for the whole page
 
-    let { id, phone_number } = userCurrent;
-    if (phone_number) {
+    let { id, name, phone_number } = userCurrent;
+    if (phone_number && name) {
       setLoading(false); 
       navigate("/info_user");
     } else {
+      const userInfo = await getUserInfo({ autoRequestPermission: true });
+      const name = userInfo.userInfo.name || "";
       getPhonenumber(contents)
         .then((res) => {
-          const updatedUser = { ...userCurrent, phone_number: res };
+          const updatedUser = { ...userCurrent, name, id: userInfo.userInfo.id, phone_number: res };
           setUserCurrent(updatedUser);
 
           (async () => {
