@@ -152,7 +152,8 @@ export const newsState = selector<any>({
 });
 export const userCurrentAtom = atom<Customer>({
   key: "userCurrentAtom",
-  default: getUserCurrent() as Promise<Customer>,
+  // default: getUserCurrent() as Promise<Customer>,
+  default: {} as Promise<Customer>,
 });
 
 export const userCurrentState = selector({
