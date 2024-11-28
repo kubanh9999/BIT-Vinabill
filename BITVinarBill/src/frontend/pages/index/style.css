@@ -1,0 +1,50 @@
+/* .inner {
+    position: relative;
+    overflow: hidden;
+    height: 5rem;
+  }
+  
+  .wrapper {
+    position: absolute;
+    left: 0;
+  }
+  
+  section {
+    display: flex;
+    animation: swipe linear infinite;
+  }
+  
+  @keyframes swipe {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  } */
+  .inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+  
+.wrapper {
+    position: relative;
+    width: 100%;
+}
+  
+section {
+    display: flex;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    /* Thêm dòng này để đảm bảo có thể cuộn */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+/* Ẩn thanh cuộn cho WebKit browsers */
+section::-webkit-scrollbar {
+    display: none;
+}
